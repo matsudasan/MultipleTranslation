@@ -57,6 +57,14 @@ const Search: React.FC<Props> = ({ languages,Translation,setLang}) => {
         setSelect(e.target.value as string)
         setLang(e.target.value as string)
     }
+
+    const handleClick=()=>{
+        if(!select || !text){
+            alert('翻訳する言語か、文章が入力されていません')
+            return
+        }
+        Translation(text)
+    }
     return (
         <Container>
             <FormControl className={classes.formControl}>
@@ -86,7 +94,7 @@ const Search: React.FC<Props> = ({ languages,Translation,setLang}) => {
             variant="contained" 
             color="primary" 
             className={classes.button}
-            onClick={()=>Translation(text)}
+            onClick={handleClick}
             >翻訳する</Button>
         </Container>
     )
